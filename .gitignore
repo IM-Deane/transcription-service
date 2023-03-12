@@ -1,7 +1,8 @@
 node_modules
-temp/*
+src/tmp/*
+dist/*
 
 # environment
-python/.venv
+src/python/.venv
 .env
 .env.local

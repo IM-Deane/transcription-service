@@ -1,11 +1,13 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const compression = require("compression");
-const helmet = require("helmet");
-require("dotenv").config();
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import compression from "compression";
+import helmet from "helmet";
+import dotenv from "dotenv";
 
-const { helloRoutes, apiRoutes } = require("./routes");
+dotenv.config();
+
+import { helloRoutes, apiRoutes } from "./routes";
 
 const app = express();
 

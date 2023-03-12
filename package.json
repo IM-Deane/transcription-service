@@ -8,8 +8,9 @@
 		"node": ">=18.12.1"
 	},
 	"scripts": {
-		"start": "NODE_ENV=production node index.js",
-		"dev": "nodemon index.js",
+		"build": "tsc",
+		"start": "NODE_ENV=production node ./dist/index.js",
+		"dev": "concurrently \"npx tsc --watch\" \"nodemon -q ./dist/index.js\"",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "tristandeane93@gmail.com",
@@ -27,5 +28,19 @@
 		"nodemon": "^2.0.20",
 		"uuid": "^9.0.0",
 		"youtube-dl-exec": "^2.4.0"
+	},
+	"devDependencies": {
+		"@types/body-parser": "^1.19.2",
+		"@types/compression": "^1.7.2",
+		"@types/cors": "^2.8.13",
+		"@types/express": "^4.17.17",
+		"@types/formidable": "^2.0.5",
+		"@types/mv": "^2.1.2",
+		"@types/node": "^18.15.0",
+		"@types/nodemon": "^1.19.2",
+		"@types/uuid": "^9.0.1",
+		"concurrently": "^7.6.0",
+		"typed-emitter": "^2.1.0",
+		"typescript": "^4.9.5"
 	}
 }

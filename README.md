@@ -10,7 +10,8 @@ Lambda instance.
 
 ### Stack
 
-- Node v16.19.0
+- Node v18.12.1
+- OPENAI WHISPER API
 - AWS SDK
 - AWS Lambda
 - AWS API Gateway

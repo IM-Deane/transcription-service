@@ -77,50 +77,8 @@ function uploadAndTranscribeAudio(
 					completionTime: formattedTime,
 				});
 
-				// cleanup temp file
 				fs.unlink(newPath, (err) => err && console.error(err));
 			});
-
-			// python.stdout
-			// 	.on("data", (chunk) => {
-			// 		// send progress event to client
-			// 		sseEmitter.write(`event: ${guid}\n`);
-			// 		sseEmitter.write(`data: ${JSON.stringify({ progress: 80 })}`);
-			// 		sseEmitter.write("\n\n");
-			// 		sseEmitter.flush();
-
-			// 		transcribedText = chunk.toString();
-			// 	})
-			// 	.on("end", () => {
-			// 		// send final progress to client
-			// 		sseEmitter.write(`event: ${guid}\n`);
-			// 		sseEmitter.write(`data: ${JSON.stringify({ progress: 100 })}`);
-			// 		sseEmitter.write("\n\n");
-			// 		sseEmitter.flush();
-
-			// 		const endTime = Date.now();
-			// 		completionTime = endTime - startTime;
-			// 	});
-
-			// python.stderr.on("data", (data) => {
-			// 	console.log(`stderr: ${data}`);
-			// });
-
-			// python.on("close", () => {
-			// 	const filenameNoExt = filename.substring(0, filename.lastIndexOf("."));
-			// 	const formattedTime = formatCompletionTime(completionTime);
-			// 	console.log(`Process finished in ${formattedTime}`);
-
-			// 	res.status(200).json({
-			// 		result: "File uploaded and transcribed successfully",
-			// 		filename: filenameNoExt,
-			// 		transcribedText,
-			// 		completionTime: formattedTime,
-			// 	});
-
-			// 	// cleanup temp file
-			// 	fs.unlink(newPath, (err) => err && console.error(err));
-			// });
 		} catch (error: any) {
 			sseEmitter.write("error", error);
 			res.status(500).json({ message: error.message });

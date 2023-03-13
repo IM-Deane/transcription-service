@@ -39,3 +39,17 @@ export function formatCompletionTime(timeInMillis: number) {
 	}
 	return formattedTime;
 }
+
+/**
+ * Helper function that sends progress updates to client
+ */
+export function sendProgressUpdate(
+	sseEmitter: any,
+	guid: string,
+	progressPercentage: number
+): void {
+	sseEmitter.write(`event: ${guid}\n`);
+	sseEmitter.write(`data: ${JSON.stringify({ progress: progressPercentage })}`);
+	sseEmitter.write("\n\n");
+	sseEmitter.flush();
+}

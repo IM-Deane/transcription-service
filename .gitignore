@@ -3,6 +3,6 @@ src/tmp/*
 dist/*
 
 # environment
-src/python/.venv
+python/.venv
 .env
 .env.local

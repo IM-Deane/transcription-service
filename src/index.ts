@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-import { helloRoutes, apiRoutes } from "./routes";
+import { helloRoutes, apiRoutes, healthRoute } from "./routes";
 
 const app = express();
 
@@ -21,6 +21,7 @@ app.use(helmet());
 // routes
 app.use("/", helloRoutes);
 app.use("/api", apiRoutes);
+app.use("/health", healthRoute);
 
 const PORT = process.env.PORT || 3000;
 

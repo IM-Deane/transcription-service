@@ -12,8 +12,6 @@ const PROGRESS_INTERVALS = new Set([25, 50, 75, 100]);
 
 /**
  * Handles file upload and video transcription
- * @param {*} req Handles the request from the client
- * @param {*} res Handles the response to the client
  */
 async function uploadAndTranscribeVideo(req: Request, res: Response) {
 	const { videoURL, guid } = req.body;
@@ -46,7 +44,7 @@ async function uploadAndTranscribeVideo(req: Request, res: Response) {
 		let completionTime = 0;
 		let downloadProgress = 1;
 		https.get(audioFileObject.url, (downloadResponse) => {
-			const tempInputFilePath = `./temp/${filename}`;
+			const tempInputFilePath = `/tmp/${filename}`;
 			const writer = fs.createWriteStream(tempInputFilePath);
 
 			let totalDownloadTime = 0;

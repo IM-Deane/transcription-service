@@ -11,8 +11,19 @@ import { helloRoutes, apiRoutes, healthRoute } from "./routes";
 
 const app = express();
 
+let corsOptions = {};
+if (process.env.NODE_ENV === "production") {
+	corsOptions = {
+		origin: "https://auvid.vercel.app/",
+	};
+} else {
+	corsOptions = {
+		origin: "*",
+	};
+}
+
 // middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(compression()); // compress responses to enable server-sent events
@@ -26,5 +37,5 @@ app.use("/health", healthRoute);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-	console.log(`Upload Events service listening on ${PORT}`);
+	console.log(`Upload Events service listening on PORT:${PORT}`);
 });

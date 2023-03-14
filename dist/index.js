@@ -12,8 +12,20 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const routes_1 = require("./routes");
 const app = (0, express_1.default)();
+let corsOptions = {};
+if (process.env.NODE_ENV === "production") {
+    corsOptions = {
+        origin: "https://auvid.vercel.app/",
+    };
+}
+else {
+    corsOptions = {
+        origin: "*",
+    };
+}
+console.log(corsOptions);
 // middleware
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)(corsOptions));
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use((0, compression_1.default)()); // compress responses to enable server-sent events
@@ -24,5 +36,5 @@ app.use("/api", routes_1.apiRoutes);
 app.use("/health", routes_1.healthRoute);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Upload Events service listening on ${PORT}`);
+    console.log(`Upload Events service listening on PORT:${PORT}`);
 });

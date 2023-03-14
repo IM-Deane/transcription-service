@@ -7,7 +7,8 @@ WORKDIR /app
 COPY package*.json tsconfig.json /
 EXPOSE 5000
 
-ENV NODE_ENV=production
-RUN npm ci
+FROM base as dev
+ENV NODE_ENV=development
+RUN npm install -g nodemon && npm install
 COPY . /
-CMD ["npm start"]
+CMD ["npm run dev"]

@@ -11,7 +11,6 @@
 		"build": "tsc",
 		"start": "NODE_ENV=production node ./dist/index.js",
 		"dev": "concurrently \"npx tsc --watch\" \"nodemon -q ./dist/index.js\"",
-		"dev:docker": "npm run dev",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "tristandeane93@gmail.com",

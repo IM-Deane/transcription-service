@@ -4,13 +4,14 @@
 	"description": "Microservice that handles audio and video transcriptions for Auvid",
 	"main": "index.js",
 	"private": true,
-	"engine": {
-		"node": ">=18.12.1"
+	"engines": {
+		"node": ">=18"
 	},
 	"scripts": {
 		"build": "tsc",
 		"start": "NODE_ENV=production node ./dist/index.js",
 		"dev": "concurrently \"npx tsc --watch\" \"nodemon -q ./dist/index.js\"",
+		"dev:docker": "npm run dev",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "tristandeane93@gmail.com",

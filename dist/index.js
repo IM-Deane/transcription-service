@@ -12,9 +12,9 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const routes_1 = require("./routes");
 const app = (0, express_1.default)();
-const allowedOrigins = ["https://auvid-r2kle248i-im-deane.vercel.app/"];
+const allowedOrigins = ["https://auvid-jikrsvljq-im-deane.vercel.app"];
 if (process.env.NODE_ENV === "production") {
-    allowedOrigins.push("https://auvid.vercel.app/");
+    allowedOrigins.push("https://auvid.vercel.app");
 }
 else {
     allowedOrigins.push("http://localhost:3000");

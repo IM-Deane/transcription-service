@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import cors from "cors";
+import cors, { CorsOptions } from "cors";
 import compression from "compression";
 import helmet from "helmet";
 import dotenv from "dotenv";
@@ -11,25 +11,23 @@ import { helloRoutes, apiRoutes, healthRoute } from "./routes";
 
 const app = express();
 
-let corsOptions = {};
-if (process.env.NODE_ENV === "production") {
-	corsOptions = {
-		origin: "https://auvid.vercel.app/",
-	};
-} else {
-	corsOptions = {
-		origin: "*",
-	};
-}
+const allowedOrigins = [];
 
-// middleware
+if (process.env.NODE_ENV === "production") {
+	allowedOrigins.push("https://auvid.vercel.app/");
+} else {
+	allowedOrigins.push("http://localhost:3000");
+}
+const corsOptions: CorsOptions = {
+	origin: allowedOrigins,
+};
+
 app.use(cors(corsOptions));
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(compression()); // compress responses to enable server-sent events
-app.use(helmet());
 
-// routes
 app.use("/", helloRoutes);
 app.use("/api", apiRoutes);
 app.use("/health", healthRoute);

@@ -10,9 +10,6 @@ Lambda instance.
 
 ### Stack
 
-- Node v18.12.1
-- OPENAI WHISPER API
-- AWS SDK
-- AWS Lambda
-- AWS API Gateway
-- AWS Secret Manager
+- [Node v18.12.1](https://nodejs.org/en/)
+- [OPENAI WHISPER API](https://platform.openai.com/docs/api-reference/audio)
+- [Railway](https://railway.app/)

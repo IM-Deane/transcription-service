@@ -11,15 +11,15 @@ import { helloRoutes, apiRoutes, healthRoute } from "./routes";
 
 const app = express();
 
-const allowedOrigins = ["https://auvid-fy7y6oy0m-im-deane.vercel.app/"];
+// TODO: Add allowed origins to env
+const allowedOrigins = [process.env.PROD_ORIGIN, process.env.STAGING_ORIGIN];
 
 if (process.env.NODE_ENV === "production") {
-	allowedOrigins.push("https://auvid.vercel.app");
-} else {
-	allowedOrigins.push("http://localhost:3000");
+	allowedOrigins.push(process.env.PROD_ORIGIN);
 }
+
 const corsOptions: CorsOptions = {
-	origin: allowedOrigins,
+	origin: "*",
 };
 
 app.use(cors(corsOptions));

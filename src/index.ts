@@ -11,7 +11,7 @@ import { helloRoutes, apiRoutes, healthRoute } from "./routes";
 
 const app = express();
 
-const allowedOrigins = ["https://auvid-j1nadzovf-im-deane.vercel.app"];
+const allowedOrigins = ["https://auvid-fy7y6oy0m-im-deane.vercel.app/"];
 
 if (process.env.NODE_ENV === "production") {
 	allowedOrigins.push("https://auvid.vercel.app");

@@ -24,5 +24,5 @@ app.use("/api", routes_1.apiRoutes);
 app.use("/health", routes_1.healthRoute);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Upload Events service listening at ${process.env.SERVER_URL}${PORT}`);
+    console.log(`Upload Events service listening on ${PORT}`);
 });

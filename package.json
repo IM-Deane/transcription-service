@@ -4,7 +4,6 @@
 	"description": "Microservice that handles audio and video transcriptions for Auvid",
 	"main": "index.js",
 	"private": true,
-	"type": "module",
 	"engines": {
 		"node": ">=18"
 	},

@@ -1,7 +1,7 @@
 import EventEmitter from "events";
 
 class EventEmitterManagerService extends EventEmitter {
-	sseEmitters = {};
+	sseEmitters: { [key: string]: any } = {};
 
 	constructor() {
 		super();
@@ -12,7 +12,7 @@ class EventEmitterManagerService extends EventEmitter {
 	 * Creates an emitter and adds it to cache and emits an `GUID` event.
 	 * @param {string} guid UUID of emitter
 	 */
-	createEmitter(guid) {
+	createEmitter(guid: string) {
 		if (!guid) return;
 
 		this.sseEmitters[guid] = new EventEmitter();
@@ -25,7 +25,7 @@ class EventEmitterManagerService extends EventEmitter {
 	 * Retrieves an existing emitter from the cache
 	 * @param {string} guid UUID of emitter
 	 */
-	getEmitter(guid) {
+	getEmitter(guid: string) {
 		if (!guid) return;
 		return this.sseEmitters[guid];
 	}
@@ -35,7 +35,7 @@ class EventEmitterManagerService extends EventEmitter {
 	 * @param {string} guid UUID of emitter
 	 * @param {EventEmitter} emitter instance being stored
 	 */
-	setEmitter(guid, emitter) {
+	setEmitter(guid: string, emitter: any) {
 		if (!guid || !emitter) return;
 
 		this.sseEmitters[guid] = emitter;
@@ -46,7 +46,7 @@ class EventEmitterManagerService extends EventEmitter {
 	 * Removes emitter from cache
 	 * @param {string} guid UUID of emitter
 	 */
-	removeEmitter(guid) {
+	removeEmitter(guid: string) {
 		delete this.sseEmitters[guid];
 	}
 }

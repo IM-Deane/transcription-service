@@ -2,10 +2,11 @@ version: "3.8"
 services:
   dev:
     build:
-      context: ./
+      context: ./app
       dockerfile: ./dev.Dockerfile
+      target: dev
     volumes:
-      - .:/app
+      - .:/
     command: npm run dev
     ports:
       - "5000:5000"
@@ -14,9 +15,11 @@ services:
       DEBUG: nodejs-docker-express:*
   prod:
     build:
-      context: ./
+      context: ./app
+      dockerfile: ./Dockerfile
+      target: prod
     volumes:
-      - .:/app
+      - .:/
     command: npm start
     ports:
       - "5000:5000"

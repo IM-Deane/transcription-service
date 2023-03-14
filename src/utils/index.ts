@@ -18,22 +18,16 @@ export function removeClientAndEmitter(clientId: string, guid: string) {
  * @returns {string} formatted time string (MM:SS:mins or SS:secs)
  */
 export function formatCompletionTime(timeInMillis: number) {
-	if (!timeInMillis) {
-		throw new Error("No time provided!");
-	} else if (typeof timeInMillis !== "number") {
-		throw new Error("Time provided is not a number!");
-	}
-
 	let formattedTime = "";
 	const seconds = Math.floor((timeInMillis / 1000) % 60);
 	const minutes = Math.floor((timeInMillis / 1000 / 60) % 60);
 
 	if (minutes > 0) {
-		formattedTime = [
-			minutes.toString().padStart(2, "0"),
-			seconds.toString().padStart(2, "0"),
-			"mins",
-		].join(":");
+		formattedTime =
+			[
+				minutes.toString().padStart(2, "0"),
+				seconds.toString().padStart(2, "0"),
+			].join(":") + "mins";
 	} else {
 		formattedTime = seconds.toString().padStart(2, "0") + "sec";
 	}

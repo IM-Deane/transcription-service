@@ -11,15 +11,9 @@ import { helloRoutes, apiRoutes, healthRoute } from "./routes";
 
 const app = express();
 
-// TODO: Add allowed origins to env
-const allowedOrigins = [process.env.PROD_ORIGIN, process.env.STAGING_ORIGIN];
-
-if (process.env.NODE_ENV === "production") {
-	allowedOrigins.push(process.env.PROD_ORIGIN);
-}
-
+const allowedOrigins = ["https://app.auvid.io", "https://staging.auvid.io"];
 const corsOptions: CorsOptions = {
-	origin: "*",
+	origin: allowedOrigins,
 };
 
 app.use(cors(corsOptions));

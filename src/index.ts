@@ -12,6 +12,11 @@ import { helloRoutes, apiRoutes, healthRoute } from "./routes";
 const app = express();
 
 const allowedOrigins = ["https://app.auvid.io", "https://staging.auvid.io"];
+
+if (process.env.NODE_ENV !== "production") {
+	allowedOrigins.push("http://localhost:3000");
+}
+
 const corsOptions: CorsOptions = {
 	origin: allowedOrigins,
 };

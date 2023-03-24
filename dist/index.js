@@ -12,13 +12,12 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const routes_1 = require("./routes");
 const app = (0, express_1.default)();
-// TODO: Add allowed origins to env
-const allowedOrigins = [process.env.PROD_ORIGIN, process.env.STAGING_ORIGIN];
-if (process.env.NODE_ENV === "production") {
-    allowedOrigins.push(process.env.PROD_ORIGIN);
+const allowedOrigins = ["https://app.auvid.io", "https://staging.auvid.io"];
+if (process.env.NODE_ENV !== "production") {
+    allowedOrigins.push("http://localhost:3000");
 }
 const corsOptions = {
-    origin: "*",
+    origin: allowedOrigins,
 };
 app.use((0, cors_1.default)(corsOptions));
 app.use((0, helmet_1.default)());
